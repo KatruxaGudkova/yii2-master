@@ -14,6 +14,14 @@ class HtmlTag
 
     public array $customAttributes = [];
 
+    public function __construct(string|null $id = null, string|null $className=null, string $innerHtml = '', array $styles=[], string $name = 'div', array $customAttributes=[]){
+        $this->name = $name;
+        $this->id = $id;
+        $this->className = $className;
+        $this->styles = $styles;
+        $this->innerHtml = $innerHtml;
+        $this->customAttributes = $customAttributes;
+    }
 
     public function render() 
     {
@@ -24,7 +32,7 @@ class HtmlTag
         }
         if ($this->className !== null) {
             $context .= " ";
-            $context .= "calss = \"{$this->className}\"";
+            $context .= "class = \"{$this->className}\"";
         }
         if (empty($this->styles) === false) {
             $style = [];
